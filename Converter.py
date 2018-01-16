@@ -41,7 +41,7 @@ class Converter:
             The float value of the converted crypto.
 
         Raises:
-            ValueError: If coinfrom or cointo is not a valid coin.
+            NameError: If coinfrom or cointo is not a valid coin.
         """
 
         cryptotracker = CryptoTracker.CryptoTracker()
@@ -52,10 +52,10 @@ class Converter:
             availablecryptos.add(crypto['id'])
 
         if self.coinfrom not in availablecryptos:
-            raise ValueError('ERROR \'{0}\' is not an available crypto.'.format(self.coinfrom))
+            raise NameError('ERROR \'{0}\' is not an available crypto.'.format(self.coinfrom))
 
         if self.cointo not in availablecryptos and self.cointo != 'usd':
-            raise ValueError('ERROR. Cannot convert to \'{0}\'.'.format(self.cointo))
+            raise NameError('ERROR. Cannot convert to \'{0}\'.'.format(self.cointo))
 
         if self.cointo == 'bitcoin' or self.cointo == 'usd':
             for crypto in apidata:
